@@ -1,6 +1,7 @@
 [submodule "Straw/vendor/spdlog"]
 	path = Straw/vendor/spdlog
 	url = https://github.com/gabime/spdlog
-[submodule "Straw/vendor/glfw"]
-	path = Straw/vendor/glfw
+
+[submodule "Straw/vendor/GLFW"]
+	path = Straw/vendor/GLFW
 	url = https://github.com/TheCherno/glfw

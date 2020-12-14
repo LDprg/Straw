@@ -13,6 +13,8 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "%{wks.location}/Straw/vendor/glfw/include"
 
+include "Straw/vendor/GLFW"
+
 project "Straw"
 	location "Straw"
 	kind "SharedLib"
@@ -31,7 +33,13 @@ project "Straw"
 
 	includedirs{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -49,7 +57,10 @@ project "Straw"
 		}
 
 	filter "configurations:Debug"
-		defines "ST_DEBUG"
+		defines{
+			"ST_DEBUG",
+			"ST_ENABLE_ASSERTS"
+		}
 		runtime "Debug"
 		symbols "on"
 
@@ -96,7 +107,10 @@ project "Sandbox"
 		}
 
 	filter "configurations:Debug"
-		defines "ST_DEBUG"
+		defines{
+			"ST_DEBUG",
+			"ST_ENABLE_ASSERTS"
+		}
 		runtime "Debug"
 		symbols "on"
 
