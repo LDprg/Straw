@@ -2,10 +2,6 @@
 
 #include "Straw/Core.h"
 
-#include <string>
-#include <functional>
-#include <sstream>
-
 namespace Straw
 {
 
