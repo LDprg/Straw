@@ -9,6 +9,8 @@ namespace Straw
 
 int main(int argc, char** argv)
 {
+	Straw::Log::Init();
+
 	auto app = Straw::CreateApplication();
 
 	app->Run();

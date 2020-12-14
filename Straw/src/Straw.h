@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Straw/Core.h"
+#include <Straw/Application.h>
+#include <Straw/Log.h>
 
-#include "Straw/Application.h"
-
-#include "Straw/EntryPoint.h"
+// --- ENTRYPOINT ---
+#include <Straw/EntryPoint.h>
+// ------------------

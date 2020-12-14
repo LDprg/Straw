@@ -28,7 +28,7 @@ project "Straw"
 
 	includedirs{
 		"%{prj.name}/src",
-		"%{prj.name}/vedor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include"
 	}
 
 	filter "system:windows"
@@ -75,7 +75,8 @@ project "Sandbox"
 	}
 
 	includedirs{
-		"%{wks.location}/Straw/src"
+		"%{wks.location}/Straw/src",
+		"%{wks.location}/Straw/vendor/spdlog/include"
 	}
 
 	links{
