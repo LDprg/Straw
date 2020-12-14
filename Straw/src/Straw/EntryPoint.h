@@ -11,6 +11,8 @@ int main(int argc, char** argv)
 {
 	Straw::Log::Init();
 
+	ST_CORE_TRACE("Log Initialised!");
+
 	auto app = Straw::CreateApplication();
 
 	app->Run();

@@ -1,6 +1,7 @@
 #pragma once
 
-#include <Straw/Core.h>
+#include "Core.h"
+#include "Events/Event.h"
 
 namespace Straw
 {

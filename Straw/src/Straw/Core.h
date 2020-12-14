@@ -9,3 +9,5 @@
 #else
 	#error Straw has only Windows support
 #endif
+
+#define BIT(x) (1 << (x))
