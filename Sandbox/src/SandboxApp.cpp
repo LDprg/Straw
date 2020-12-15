@@ -5,7 +5,7 @@ class Sandbox :public Straw::Application
 public:
 	Sandbox()
 	{
-
+		PushOverlay(new Straw::ImGuiLayer());
 	}
 
 	~Sandbox()

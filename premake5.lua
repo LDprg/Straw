@@ -11,9 +11,13 @@ workspace "Straw"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
-IncludeDir["GLFW"] = "%{wks.location}/Straw/vendor/glfw/include"
+IncludeDir["GLFW"] = "%{wks.location}/Straw/vendor/GLFW/include"
+IncludeDir["Glad"] = "%{wks.location}/Straw/vendor/Glad/include"
+IncludeDir["ImGui"] = "%{wks.location}/Straw/vendor/imgui"
 
 include "Straw/vendor/GLFW"
+include "Straw/vendor/Glad"
+include "Straw/vendor/imgui"
 
 project "Straw"
 	location "Straw"
@@ -34,13 +38,19 @@ project "Straw"
 	includedirs{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
+
+	defines "GLFW_INCLUDE_NONE"
 
 	filter "system:windows"
 		cppdialect "C++17"
@@ -62,16 +72,19 @@ project "Straw"
 			"ST_ENABLE_ASSERTS"
 		}
 		runtime "Debug"
+		buildoptions "/MDd"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "ST_RELEASE"
 		runtime "Release"
+		buildoptions "/MD"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "ST_DIST"
 		runtime "Release"
+		buildoptions "/MD"
 		optimize "on"
 	
 project "Sandbox"
@@ -112,14 +125,17 @@ project "Sandbox"
 			"ST_ENABLE_ASSERTS"
 		}
 		runtime "Debug"
+		buildoptions "/MDd"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "ST_RELEASE"
 		runtime "Release"
+		buildoptions "/MD"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "ST_DIST"
 		runtime "Release"
+		buildoptions "/MD"
 		optimize "on"

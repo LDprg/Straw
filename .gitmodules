@@ -5,3 +5,6 @@
 [submodule "Straw/vendor/GLFW"]
 	path = Straw/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "Straw/vendor/imgui"]
+	path = Straw/vendor/imgui
+	url = https://github.com/TheCherno/imgui
