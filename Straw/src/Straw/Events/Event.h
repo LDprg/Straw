@@ -9,7 +9,7 @@ namespace Straw
 	{
 		None = 0,
 		WindowResize, WindowClose,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseMoved, MouseScrolled, MouseButtonPressed, MouseButtonReleased
 	};
 
