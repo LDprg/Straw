@@ -7,7 +7,6 @@
 
 namespace Straw
 {
-
 	class STRAW_API Log
 	{
 	public:
@@ -27,7 +26,6 @@ namespace Straw
 		static std::shared_ptr <spdlog::logger> s_CoreLogger;
 		static std::shared_ptr <spdlog::logger> s_ClientLogger;
 	};
-
 }
 
 #define ST_CORE_TRACE(...)	::Straw::Log::GetCoreLogger()->trace(__VA_ARGS__)

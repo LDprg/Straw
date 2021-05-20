@@ -14,6 +14,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "%{wks.location}/Straw/vendor/GLFW/include"
 IncludeDir["Glad"] = "%{wks.location}/Straw/vendor/Glad/include"
 IncludeDir["ImGui"] = "%{wks.location}/Straw/vendor/imgui"
+IncludeDir["glm"] = "%{wks.location}/Straw/vendor/glm"
 
 include "Straw/vendor/GLFW"
 include "Straw/vendor/Glad"
@@ -32,7 +33,9 @@ project "Straw"
 
 	files{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.hpp",
+		"%{prj.name}/src/**.cpp",
+		"%{IncludeDir.glm}/glm/**.h"
 	}
 
 	includedirs{
@@ -40,7 +43,8 @@ project "Straw"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links{
@@ -98,12 +102,15 @@ project "Sandbox"
 
 	files{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.hpp",
+		"%{prj.name}/src/**.cpp",
+		"%{IncludeDir.glm}/glm/**.h"
 	}
 
 	includedirs{
 		"%{wks.location}/Straw/src",
-		"%{wks.location}/Straw/vendor/spdlog/include"
+		"%{wks.location}/Straw/vendor/spdlog/include",
+		"%{IncludeDir.glm}"
 	}
 
 	links{

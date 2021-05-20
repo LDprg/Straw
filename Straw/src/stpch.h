@@ -15,5 +15,5 @@
 #include "Straw/Log.h"
 
 #ifdef ST_PLATFORM_WINDOWS
-	#include <Windows.h>
-#endif 
+#include <Windows.h>
+#endif

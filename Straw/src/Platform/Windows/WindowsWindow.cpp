@@ -42,7 +42,7 @@ namespace Straw
 		if (!s_GLFWInitialized)
 		{
 			ST_CORE_VERIFY(glfwInit(), "Could not initialize GLFW!");
-			
+
 			glfwSetErrorCallback(GLFWErrorCallback);
 
 			s_GLFWInitialized = true;
@@ -80,21 +80,21 @@ namespace Straw
 
 			switch (action)
 			{
-				case GLFW_PRESS:
-				{
-					data.EventCallback(KeyPressedEvent(key, 0));
-					break;
-				}
-				case GLFW_RELEASE:
-				{
-					data.EventCallback(KeyReleasedEvent(key));
-					break;
-				}
-				case GLFW_REPEAT:
-				{
-					data.EventCallback(KeyPressedEvent(key, 1));
-					break;
-				}
+			case GLFW_PRESS:
+			{
+				data.EventCallback(KeyPressedEvent(key, 0));
+				break;
+			}
+			case GLFW_RELEASE:
+			{
+				data.EventCallback(KeyReleasedEvent(key));
+				break;
+			}
+			case GLFW_REPEAT:
+			{
+				data.EventCallback(KeyPressedEvent(key, 1));
+				break;
+			}
 			}
 		});
 
@@ -113,23 +113,23 @@ namespace Straw
 
 			switch (action)
 			{
-				case GLFW_PRESS:
-				{
-					data.EventCallback(MouseButtonPressedEvent(button));
-					break;
-				}
-				case GLFW_RELEASE:
-				{
-					data.EventCallback(MouseButtonReleasedEvent(button));
-					break;
-				}
+			case GLFW_PRESS:
+			{
+				data.EventCallback(MouseButtonPressedEvent(button));
+				break;
+			}
+			case GLFW_RELEASE:
+			{
+				data.EventCallback(MouseButtonReleasedEvent(button));
+				break;
+			}
 			}
 		});
 
 		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xpos, double ypos)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-			
+
 			data.EventCallback(MouseMovedEvent(xpos, ypos));
 		});
 
@@ -161,5 +161,4 @@ namespace Straw
 	{
 		glfwDestroyWindow(m_Window);
 	}
-
 }

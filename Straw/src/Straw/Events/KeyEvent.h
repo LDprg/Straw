@@ -4,7 +4,6 @@
 
 namespace Straw
 {
-
 	class STRAW_API KeyEvent : public Event
 	{
 	public:
@@ -13,7 +12,9 @@ namespace Straw
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
 		KeyEvent(int keycode)
-			:m_KeyCode(keycode) { }
+			:m_KeyCode(keycode)
+		{
+		}
 
 		int m_KeyCode;
 	};
@@ -22,7 +23,9 @@ namespace Straw
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
-			:KeyEvent(keycode),  m_RepeatCount(repeatCount) { }
+			:KeyEvent(keycode), m_RepeatCount(repeatCount)
+		{
+		}
 
 		inline int GetReapeatCount() const { return m_RepeatCount; }
 
@@ -42,7 +45,9 @@ namespace Straw
 	{
 	public:
 		KeyReleasedEvent(int keycode)
-			:KeyEvent(keycode)  { }
+			:KeyEvent(keycode)
+		{
+		}
 
 		std::string ToString() const override
 		{
@@ -71,5 +76,4 @@ namespace Straw
 
 		EVENT_CLASS_TYPE(KeyTyped);
 	};
-
 }

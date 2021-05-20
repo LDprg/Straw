@@ -5,7 +5,6 @@
 
 namespace Straw
 {
-
 	class STRAW_API LayerStack
 	{
 	public:
@@ -23,5 +22,4 @@ namespace Straw
 		std::vector<Layer*> m_Layers;
 		std::vector<Layer*>::iterator m_LayerInsert;
 	};
-
 }

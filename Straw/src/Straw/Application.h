@@ -6,12 +6,11 @@
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 #include "Events/KeyEvent.h"
-#include "Events/MouseEvent.h" 
+#include "Events/MouseEvent.h"
 #include "Window.h"
 
 namespace Straw
 {
-
 	class STRAW_API Application
 	{
 	public:
@@ -35,5 +34,4 @@ namespace Straw
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
 	};
-
 }

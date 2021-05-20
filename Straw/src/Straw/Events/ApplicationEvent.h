@@ -4,12 +4,13 @@
 
 namespace Straw
 {
-
 	class STRAW_API WindowResizeEvent : public Event
 	{
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height)
-			:m_Width(width), m_Height(height) { }
+			:m_Width(width), m_Height(height)
+		{
+		}
 
 		inline float GetWidth() const { return m_Width; }
 		inline float GetHeigth() const { return m_Height; }
@@ -35,5 +36,4 @@ namespace Straw
 		EVENT_CLASS_TYPE(WindowClose);
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
-
 }

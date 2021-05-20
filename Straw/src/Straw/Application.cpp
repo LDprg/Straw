@@ -1,7 +1,9 @@
 #include "stpch.h"
 #include "Application.h"
 
-#include "Events/ApplicationEvent.h" 
+#include "Events/ApplicationEvent.h"
+
+#include "Input.h"
 
 #include "glad/glad.h"
 
@@ -20,7 +22,6 @@ namespace Straw
 
 	Application::~Application()
 	{
-
 	}
 
 	void Application::Run()
@@ -42,7 +43,7 @@ namespace Straw
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
-	
+
 	void Application::PushOverlay(Layer* layer)
 	{
 		m_LayerStack.PushOverlay(layer);
@@ -61,7 +62,6 @@ namespace Straw
 			if (e.Handled)
 				break;
 		}
-
 	}
 
 	bool Application::OnWindowClosed(WindowCloseEvent& e)

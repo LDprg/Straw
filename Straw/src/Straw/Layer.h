@@ -5,7 +5,6 @@
 
 namespace Straw
 {
-
 	class STRAW_API Layer
 	{
 	public:
@@ -21,5 +20,4 @@ namespace Straw
 	protected:
 		std::string m_DebugName;
 	};
-
 }
