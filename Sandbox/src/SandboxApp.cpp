@@ -15,7 +15,6 @@ public:
 
 	void OnEvent(Straw::Event& event) override 
 	{
-
 	}
 };
 

@@ -11,7 +11,7 @@
 
 namespace Straw
 {
-	class STRAW_API Application
+	class Application
 	{
 	public:
 		Application();

@@ -5,7 +5,7 @@
 
 namespace Straw
 {
-	class STRAW_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();

@@ -4,7 +4,12 @@
 #include "Straw/Application.h"
 
 #include "imgui.h"
-#include "Platform/OpenGL/ImGuiOpenGLRenderer.h"
+
+#include <examples/imgui_impl_opengl3.cpp>
+#include <examples/imgui_impl_glfw.cpp>
+
+//#include "Platform/OpenGL/ImGuiOpenGLRenderer.h"
+#include <examples/imgui_impl_glfw.h>
 
 // Temporary
 #include <GLFW/glfw3.h>
@@ -54,11 +59,30 @@ namespace Straw
 		io.KeyMap[ImGuiKey_Y] = ST_KEY_Y;
 		io.KeyMap[ImGuiKey_Z] = ST_KEY_Z;
 
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
+		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
+		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+
+		ImGuiStyle& style = ImGui::GetStyle();
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
+			style.WindowRounding = 0.0f;
+			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+		}
+
+		Application& app = Application::Get();
+		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
+
+		ImGui_ImplGlfw_InitForOpenGL(window, true);
 		ImGui_ImplOpenGL3_Init("#version 410");
+
 	}
 
 	void ImGuiLayer::OnDetach()
 	{
+		ImGui_ImplOpenGL3_Shutdown();
+		ImGui_ImplGlfw_Shutdown();
+		ImGui::DestroyContext();
 	}
 
 	void ImGuiLayer::OnUpdate()
@@ -72,6 +96,7 @@ namespace Straw
 		m_Time = time;
 
 		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
 		static bool show = true;
@@ -79,5 +104,13 @@ namespace Straw
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
+			GLFWwindow* backup_current_context = glfwGetCurrentContext();
+			ImGui::UpdatePlatformWindows();
+			ImGui::RenderPlatformWindowsDefault();
+			glfwMakeContextCurrent(backup_current_context);
+		}
 	}
 }

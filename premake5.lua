@@ -11,18 +11,18 @@ workspace "Straw"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
-IncludeDir["GLFW"] = "%{wks.location}/Straw/vendor/GLFW/include"
+IncludeDir["GLFW"] = "%{wks.location}/Straw/vendor/glfw/include"
 IncludeDir["Glad"] = "%{wks.location}/Straw/vendor/Glad/include"
 IncludeDir["ImGui"] = "%{wks.location}/Straw/vendor/imgui"
 IncludeDir["glm"] = "%{wks.location}/Straw/vendor/glm"
 
-include "Straw/vendor/GLFW"
+include "Straw/vendor/glfw"
 include "Straw/vendor/Glad"
 include "Straw/vendor/imgui"
 
 project "Straw"
 	location "Straw"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"	
 
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
@@ -61,14 +61,7 @@ project "Straw"
 		staticruntime "on"
 		systemversion "latest"
 
-		defines{
-			"ST_PLATFORM_WINDOWS",
-			"ST_BUILD_DLL"
-		}
-
-		postbuildcommands{
-			("{COPY} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/Sandbox")
-		}
+		defines "ST_PLATFORM_WINDOWS"
 
 	filter "configurations:Debug"
 		defines{
@@ -76,19 +69,16 @@ project "Straw"
 			"ST_ENABLE_ASSERTS"
 		}
 		runtime "Debug"
-		buildoptions "/MDd"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "ST_RELEASE"
 		runtime "Release"
-		buildoptions "/MD"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "ST_DIST"
 		runtime "Release"
-		buildoptions "/MD"
 		optimize "on"
 	
 project "Sandbox"
@@ -132,17 +122,14 @@ project "Sandbox"
 			"ST_ENABLE_ASSERTS"
 		}
 		runtime "Debug"
-		buildoptions "/MDd"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "ST_RELEASE"
 		runtime "Release"
-		buildoptions "/MD"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "ST_DIST"
 		runtime "Release"
-		buildoptions "/MD"
 		optimize "on"

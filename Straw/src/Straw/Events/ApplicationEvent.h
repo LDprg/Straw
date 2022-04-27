@@ -4,7 +4,7 @@
 
 namespace Straw
 {
-	class STRAW_API WindowResizeEvent : public Event
+	class WindowResizeEvent : public Event
 	{
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height)
@@ -28,7 +28,7 @@ namespace Straw
 		unsigned int m_Width, m_Height;
 	};
 
-	class STRAW_API WindowCloseEvent : public Event
+	class WindowCloseEvent : public Event
 	{
 	public:
 		WindowCloseEvent() {}

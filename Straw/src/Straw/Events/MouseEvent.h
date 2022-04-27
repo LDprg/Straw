@@ -4,7 +4,7 @@
 
 namespace Straw
 {
-	class STRAW_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -28,7 +28,7 @@ namespace Straw
 		float m_MouseX, m_MouseY;
 	};
 
-	class STRAW_API MouseScrollEvent : public Event
+	class MouseScrollEvent : public Event
 	{
 	public:
 		MouseScrollEvent(float xOffset, float yOffset)
@@ -52,7 +52,7 @@ namespace Straw
 		float m_XOffset, m_YOffset;
 	};
 
-	class STRAW_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return m_Button; }
@@ -67,7 +67,7 @@ namespace Straw
 		int m_Button;
 	};
 
-	class STRAW_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(float button)
@@ -85,7 +85,7 @@ namespace Straw
 		EVENT_CLASS_TYPE(MouseButtonPressed);
 	};
 
-	class STRAW_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(float button)

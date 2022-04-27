@@ -7,7 +7,7 @@
 
 namespace Straw
 {
-	class STRAW_API Log
+	class Log
 	{
 	public:
 		static void Init();
